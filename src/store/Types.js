@@ -8,6 +8,8 @@ const Types = {
   GET_PRODUCTS: '5',
   REDUCE_STOCK: '6',
   ADD_STOCK: '7',
+
+  URL_BASE: 'https://imagenes.preciosclaros.gob.ar/productos/',
 };
 
 export default Types;

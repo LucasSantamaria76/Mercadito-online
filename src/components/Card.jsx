@@ -11,6 +11,7 @@ import {
 } from '@chakra-ui/react';
 
 import { useStoreCart } from '../store/CartProvider';
+import Types from '../store/Types';
 import ModalProduct from './ModalProduct';
 
 const scaledHover = {
@@ -48,11 +49,7 @@ const Card = ({ product, addProductToCart }) => {
             Sin Stock
           </Badge>
         )}
-        <Image
-          src={import.meta.env.VITE_APP_IMAGEN_URL_BASE + id + '.jpg'}
-          alt='Imagen producto'
-          w='35%'
-        />
+        <Image src={Types.URL_BASE + id + '.jpg'} alt='Imagen producto' w='35%' />
 
         <VStack justify='space-evenly' w='65%'>
           <Box m={2} fontWeight='bold' as='h3' lineHeight='tight' noOfLines={1}>

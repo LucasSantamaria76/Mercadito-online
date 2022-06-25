@@ -19,7 +19,7 @@ export default function ItemCart({ product }) {
       <Tr>
         <Td>
           {' '}
-          <Image w='70px' src={import.meta.env.VITE_APP_IMAGEN_URL_BASE + id + '.jpg'} alt={id} />
+          <Image w='70px' src={Types.URL_BASE + id + '.jpg'} alt={id} />
         </Td>
         <Td>{`${description.substring(0, 40)}...`}</Td>
         <Td isNumeric>{parseCurrency(price)}</Td>

@@ -55,11 +55,7 @@ export default function ModalProduct({ product, isOpen, onClose, addProductToCar
                   Sin Stock
                 </Badge>
               )}
-              <Image
-                src={import.meta.env.VITE_APP_IMAGEN_URL_BASE + id + '.jpg'}
-                alt='Producto'
-                boxSize='400px'
-              />
+              <Image src={Types.URL_BASE + id + '.jpg'} alt='Producto' boxSize='400px' />
               <VStack w='60%' spacing='24px'>
                 <Text fontSize='2xl'>{`Precio: $ ${price.toFixed(2)}`}</Text>
                 <Text fontSize='2xl'>{`Stock:  ${stock}`}</Text>
