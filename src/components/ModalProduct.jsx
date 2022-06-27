@@ -17,6 +17,7 @@ import Barcode from 'react-barcode';
 import { useDispatchCart, useStoreCart } from '../store/CartProvider';
 import { useDispatchProducts } from '../store/ProductsProvider';
 import Types from '../store/Types';
+import { parseCurrency } from './../utils/utils';
 
 export default function ModalProduct({ product, isOpen, onClose, addProductToCart }) {
   const { id, category, description, price, stock, unit, volume } = product;
@@ -25,7 +26,7 @@ export default function ModalProduct({ product, isOpen, onClose, addProductToCar
   const dispatchProducts = useDispatchProducts();
 
   const reduceQuantityProductToCart = (id) => {
-    dispatchCart({ type: Types.REDUCE_QUANTITY_PRODUCT_TO_CART, payload: id });
+    dispatchCart({ type: Types.REDUCE_QUANTITY_PRODUCT_TO_CART, payload: { id, quantity: 1 } });
     dispatchProducts({ type: Types.ADD_STOCK, payload: { id, quantity: 1 } });
   };
 
@@ -57,7 +58,7 @@ export default function ModalProduct({ product, isOpen, onClose, addProductToCar
               )}
               <Image src={Types.URL_BASE + id + '.jpg'} alt='Producto' boxSize='400px' />
               <VStack w='60%' spacing='24px'>
-                <Text fontSize='2xl'>{`Precio: $ ${price.toFixed(2)}`}</Text>
+                <Text fontSize='2xl'>{`Precio: ${parseCurrency(price)}`}</Text>
                 <Text fontSize='2xl'>{`Stock:  ${stock}`}</Text>
                 <Text fontSize='md'>{`Categoria:  ${category}`}</Text>
                 <HStack>
@@ -94,8 +95,8 @@ export default function ModalProduct({ product, isOpen, onClose, addProductToCar
                     margin={0}
                   />
                 </Text>
-                <Text fontSize='sm'>{`Precio por ${unit} $ ${(price * (1 / volume)).toFixed(
-                  2
+                <Text fontSize='sm'>{`Precio por ${unit} ${parseCurrency(
+                  price * (1 / volume)
                 )}`}</Text>
               </VStack>
             </HStack>

@@ -13,6 +13,7 @@ import {
 import { useStoreCart } from '../store/CartProvider';
 import Types from '../store/Types';
 import ModalProduct from './ModalProduct';
+import { parseCurrency } from './../utils/utils';
 
 const scaledHover = {
   transition: 'transform .3s',
@@ -55,7 +56,7 @@ const Card = ({ product, addProductToCart }) => {
           <Box m={2} fontWeight='bold' as='h3' lineHeight='tight' noOfLines={1}>
             {description}
           </Box>
-          <Box>{`Precio: $ ${price.toFixed(2)}`}</Box>
+          <Box>{`Precio: ${parseCurrency(price)}`}</Box>
           <HStack w='90%' justify='space-between'>
             <Button
               bgColor='brand.primary'

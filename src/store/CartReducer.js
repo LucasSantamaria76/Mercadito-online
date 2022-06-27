@@ -1,12 +1,14 @@
 import Types from './Types';
 
 export const initialCart = {
-  userId: '',
+  user: {},
   product: [],
 };
 
 const CartReducer = (state, action) => {
   switch (action.type) {
+    case Types.SET_USER:
+      return { ...state, user: action.payload };
     case Types.EMPTY_CART:
       return {
         ...state,
@@ -29,7 +31,9 @@ const CartReducer = (state, action) => {
     case Types.REDUCE_QUANTITY_PRODUCT_TO_CART: {
       const newCartProduct = state.product
         .map((item) =>
-          item.id === action.payload ? { ...item, quantity: item.quantity - 1 } : item
+          item.id === action.payload.id
+            ? { ...item, quantity: item.quantity - action.payload.quantity }
+            : item
         )
         .filter((item) => item.quantity > 0);
       return {

@@ -4,10 +4,12 @@ const Types = {
   REDUCE_QUANTITY_PRODUCT_TO_CART: '2',
   DELETE_ALL_QUANTITIES_PRODUCT_TO_CART: '3',
   EMPTY_CART: '4',
+  SET_USER: '5',
+
   //STORE PRODUCTS
-  GET_PRODUCTS: '5',
-  REDUCE_STOCK: '6',
-  ADD_STOCK: '7',
+  GET_PRODUCTS: '100',
+  REDUCE_STOCK: '101',
+  ADD_STOCK: '102',
 
   URL_BASE: 'https://imagenes.preciosclaros.gob.ar/productos/',
 };
